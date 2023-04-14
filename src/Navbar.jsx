@@ -1,6 +1,9 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Web3 from 'web3';
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -13,7 +16,21 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Navbar() {
+  // const [isConnected, setIsConnected] = useState(false);
+  const navigate = useNavigate();
+  // async function disconnectWallet() {
+  //   try {
+  //     await window.ethereum.request({ method: 'wallet_requestPermissions', params: [{ eth_accounts: {} }] });
+  //     setIsConnected(false);
+  //     // Navigate to AuthPage after disconnecting
+  //     navigate('/auth');
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -116,7 +133,9 @@ export default function Example() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
+                            // href="/auth"
                             href="#"
+                            // onClick={disconnectWallet}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out
